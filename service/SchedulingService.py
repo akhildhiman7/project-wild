@@ -24,13 +24,16 @@ class SchedulingService:
                 break
 
             sev = self.wildFireData[wild_fire_index].severity
+            location = self.wildFireData[wild_fire_index].location.split(",")
+            
 
-            self.response.add_incident(resource.cost_per_operation, sev, True)
+            self.response.add_incident(resource.cost_per_operation, sev, True,location)
 
             wild_fire_index += 1
 
         while wild_fire_index < len(self.wildFireData):
-            self.response.add_incident(0, self.wildFireData[wild_fire_index].severity, False)
+            self.response.add_incident(0, self.wildFireData[wild_fire_index].severity, 
+                                       False,self.wildFireData[wild_fire_index].location.split(","))
             wild_fire_index += 1
 
         return self.response

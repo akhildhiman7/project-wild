@@ -15,5 +15,6 @@ def read_csv(file_path):
 if __name__ == '__main__':
     read_csv('./resource/current_wildfiredata.csv')
 
+    print(wildFireList)
     service_response = SchedulingService(wildFireList).orchestrate_wild_fires()
     print(service_response.get_report())
