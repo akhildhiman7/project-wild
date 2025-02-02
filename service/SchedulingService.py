@@ -36,6 +36,7 @@ class SchedulingService:
                                        False,self.wildFireData[wild_fire_index].location.split(","))
             wild_fire_index += 1
 
+        self.response.get_resource_count(self.fire_department)
         return self.response
 
     def sort_wildfire_data(self, wildfire_list) -> List[WildFireData]:

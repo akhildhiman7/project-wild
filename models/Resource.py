@@ -7,12 +7,12 @@ class Resource:
 class SmokeJumpers(Resource):
     def __init__(self, deployment_time, cost_per_operation, available_units):
         super().__init__(deployment_time, cost_per_operation, available_units)
-        self.name = "Smoke Jumpers"
+        self.name = "Smoke_Jumpers"
 
 class FireEngines(Resource):
     def __init__(self, deployment_time, cost_per_operation, available_units):
         super().__init__(deployment_time, cost_per_operation, available_units)
-        self.name = "Fire Engines"
+        self.name = "Fire_Engines"
 
 class Helicopters(Resource):
     def __init__(self, deployment_time, cost_per_operation, available_units):
@@ -22,9 +22,9 @@ class Helicopters(Resource):
 class TankerPlanes(Resource):
     def __init__(self, deployment_time, cost_per_operation, available_units):
         super().__init__(deployment_time, cost_per_operation, available_units)
-        self.name = "Tanker Planes"
+        self.name = "Tanker_Planes"
 
 class GroundCrews(Resource):
     def __init__(self, deployment_time, cost_per_operation, available_units):
         super().__init__(deployment_time, cost_per_operation, available_units)
-        self.name = "Ground Crews"
+        self.name = "Ground_Crews"

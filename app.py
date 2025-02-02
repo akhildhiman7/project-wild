@@ -31,5 +31,19 @@ def process_csv():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 400
 
+@app.route('/get_resources', methods=['GET'])
+def get_resources():
+    try:
+       
+        wildFireList = []
+        
+        service_response = SchedulingService(wildFireList).orchestrate_wild_fires()
+        # print(service_response.get_report())
+
+        # Return a JSON response
+        return jsonify({"status": "success", "data": service_response.get_resources()}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 400
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=11000)

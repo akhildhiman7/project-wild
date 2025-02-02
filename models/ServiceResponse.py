@@ -10,6 +10,7 @@ class ServiceResponse:
         self.severityReport = {LOW: 0, MEDIUM: 0, HIGH: 0}
         self.severityCoordinates = {True:{LOW:[], MEDIUM:[], HIGH:[]},
                                     False:{LOW:[], MEDIUM:[], HIGH:[]}}
+        self.availableResources = {}
 
     def address_fire(self):
         self.firesAddressed += 1
@@ -28,6 +29,10 @@ class ServiceResponse:
         else:
             self.damageCosts += 50000
 
+    def get_resource_count(self, fire_department):
+        for resource in fire_department.resources:
+            self.availableResources[resource.name] = resource.available_units
+            
     def add_incident(self, resource_cost, sev, resolved,coordinates):
         self.severityReport[sev] += 1
 
@@ -55,8 +60,15 @@ class ServiceResponse:
             "Total_operational_costs": self.operationalCosts,
             "Estimated_damage_costs_from_delayed_responses": self.damageCosts,
             "Fire_severity_report": self.severityReport,
-            "Coordinates": self.severityCoordinates
+            "Coordinates": self.severityCoordinates,
+            "Available_resources": self.availableResources
         }
 
         # report_json = json.dumps(report_data)
         return report_data
+
+    def get_resources(self):
+        resource_data = {
+            "Available_resources": self.availableResources
+        }
+        return resource_data
